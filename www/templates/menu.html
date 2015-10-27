@@ -1,0 +1,62 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+  <ion-side-menu side="left">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">选项</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close ng-hide="userName" ng-click="login()">
+          登录
+        </ion-item>
+
+        <ion-item ng-show="userName" menu-close class="item-icon-left" ng-click="showActionSheet()">
+          <i class="icon ion-person"></i> {{userName}}
+        </ion-item>
+
+        <ion-item menu-close class="item-icon-left" href="#/app/forecast">
+          <i class="icon ion-location"></i> {{currentCity.name}}
+        </ion-item>
+        <ion-item class="item-divider">
+          我的城市
+        </ion-item>
+        <ion-item menu-close ng-repeat="city in cities" class="item-remove-animate " href="#/app/forecast/{{city.id}}">
+          {{city.name}}
+          <ion-option-button class="button-assertive" ng-click="remove(city)">
+            删除
+          </ion-option-button>
+        </ion-item>
+        <ion-item menu-close href="#/app/area" class="item-icon-left">
+          <i class="icon ion-android-add"></i>
+        </ion-item>
+        <ion-item class="item-divider" ng-show="userName">
+          个人中心
+        </ion-item>
+        <ion-item menu-close ng-show="userName" ng-click="showMyForecast()">
+          我的预报
+        </ion-item>
+        <ion-item menu-close  href="#/app/dslj">
+          短时临近
+        </ion-item>
+        <ion-item menu-close  href="#/app/playlist">
+          Leaflet
+        </ion-item>
+        <ion-item menu-close ng-show="userName">
+          数值预报
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+  
+</ion-side-menus>

@@ -1,0 +1,85 @@
+<ion-view view-title="预报">
+    <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+   <ion-content>
+        <ion-refresher pulling-text="下拉刷新..."
+                       on-refresh="doRefresh()">
+        </ion-refresher>
+        <h1 class="dark" style="text-align:center;" ng-bind="dataBody.cityInfo.c3"></h1>
+        <h5 style="text-align:center;">更新时间：{{dataBody.now.temperature_time}}</h5>
+        <div class="row" style="text-align:center">
+            <div class='col'><img height="50" ng-src="{{dataBody.now.weather_pic}}" /><label ng-bind="dataBody.now.weather"></label></div>
+            <div class="col"><h4>气温</h4><p>{{dataBody.now.temperature}}℃</p></div>
+            <div class="col"><h4>AQI</h4><p>{{dataBody.now.aqi}}</p></div>
+            <div class="col"><h4>{{dataBody.now.wind_direction}}</h4><p>{{dataBody.now.wind_power}}</p></div>
+            <div class="col"><h4>湿度</h4><p>{{dataBody.now.sd}}</p></div>
+        </div>
+        <ion-list>
+            <ion-item>
+                <div class="row">
+                    <h2 class="col">星期{{num2weekdayCN(dataBody.f1.weekday)}}</h2>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f1.day_weather_pic}}" /><label ng-bind="dataBody.f1.day_weather"></label></div>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f1.night_weather_pic}}" /><label ng-bind="dataBody.f1.night_weather"></label></div>
+                    <div class='col-10 assertive' style="text-align:right;" ng-bind="dataBody.f1.day_air_temperature"></div>
+                    <div class='col-10 positive' style="text-align:right;" ng-bind="dataBody.f1.night_air_temperature"></div>
+                </div>
+            </ion-item>
+            <ion-item>
+                <div class="row">
+                    <h2 class="col">星期{{num2weekdayCN(dataBody.f2.weekday)}}</h2>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f2.day_weather_pic}}" /><label ng-bind="dataBody.f2.day_weather"></label></div>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f2.night_weather_pic}}" /><label ng-bind="dataBody.f2.night_weather"></label></div>
+                    <div class='col-10 assertive' style="text-align:right;" ng-bind="dataBody.f2.day_air_temperature"></div>
+                    <div class='col-10 positive' style="text-align:right;" ng-bind="dataBody.f2.night_air_temperature"></div>
+                </div>
+            </ion-item>
+            <ion-item>
+                <div class="row">
+                    <h2 class="col">星期{{num2weekdayCN(dataBody.f3.weekday)}}</h2>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f3.day_weather_pic}}" /><label ng-bind="dataBody.f3.day_weather"></label></div>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f3.night_weather_pic}}" /><label ng-bind="dataBody.f3.night_weather"></label></div>
+                    <div class='col-10 assertive' style="text-align:right;" ng-bind="dataBody.f3.day_air_temperature"></div>
+                    <div class='col-10 positive' style="text-align:right;" ng-bind="dataBody.f3.night_air_temperature"></div>
+                </div>
+            </ion-item>
+            <ion-item>
+                <div class="row">
+                    <h2 class="col">星期{{num2weekdayCN(dataBody.f4.weekday)}}</h2>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f4.day_weather_pic}}" /><label ng-bind="dataBody.f4.day_weather"></label></div>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f4.night_weather_pic}}" /><label ng-bind="dataBody.f4.night_weather"></label></div>
+                    <div class='col-10 assertive' style="text-align:right;" ng-bind="dataBody.f4.day_air_temperature"></div>
+                    <div class='col-10 positive' style="text-align:right;" ng-bind="dataBody.f4.night_air_temperature"></div>
+                </div>
+            </ion-item>
+            <ion-item>
+                <div class="row">
+                    <h2 class="col">星期{{num2weekdayCN(dataBody.f5.weekday)}}</h2>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f5.day_weather_pic}}" /><label ng-bind="dataBody.f5.day_weather"></label></div>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f5.night_weather_pic}}" /><label ng-bind="dataBody.f5.night_weather"></label></div>
+                    <div class='col-10 assertive' style="text-align:right;" ng-bind="dataBody.f5.day_air_temperature"></div>
+                    <div class='col-10 positive' style="text-align:right;" ng-bind="dataBody.f5.night_air_temperature"></div>
+                </div>
+            </ion-item>
+            <ion-item>
+                <div class="row">
+                    <h2 class="col">星期{{num2weekdayCN(dataBody.f6.weekday)}}</h2>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f6.day_weather_pic}}" /><label ng-bind="dataBody.f6.day_weather"></label></div>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f6.night_weather_pic}}" /><label ng-bind="dataBody.f6.night_weather"></label></div>
+                    <div class='col-10 assertive' style="text-align:right;" ng-bind="dataBody.f6.day_air_temperature"></div>
+                    <div class='col-10 positive' style="text-align:right;" ng-bind="dataBody.f6.night_air_temperature"></div>
+                </div>
+            </ion-item>
+            <ion-item>
+                <div class="row">
+                    <h2 class="col">星期{{num2weekdayCN(dataBody.f7.weekday)}}</h2>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f7.day_weather_pic}}" /><label ng-bind="dataBody.f7.day_weather"></label></div>
+                    <div class='col'><img height="30" ng-src="{{dataBody.f7.night_weather_pic}}" /><label ng-bind="dataBody.f7.night_weather"></label></div>
+                    <div class='col-10 assertive' style="text-align:right;" ng-bind="dataBody.f7.day_air_temperature"></div>
+                    <div class='col-10 positive' style="text-align:right;" ng-bind="dataBody.f7.night_air_temperature"></div>
+                </div>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-view>

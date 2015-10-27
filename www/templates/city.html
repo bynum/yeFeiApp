@@ -1,0 +1,10 @@
+<ion-view view-title="县/市/区">
+   <ion-content>
+	   <ion-list>
+           <ion-item class="item-icon-right" ng-repeat="county in city.county"  href="#/app/forecast/{{county.weatherCode}}" ng-click="addCity(county.name,county.weatherCode)">
+               {{county.name}}
+               <i class="icon ion-chevron-right icon-accessory"></i>
+           </ion-item>
+       </ion-list>
+   </ion-content>
+</ion-view>
