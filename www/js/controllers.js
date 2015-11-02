@@ -1,6 +1,6 @@
 angular.module('starter.controllers', ['starter.services', 'ngResource'])
 
-    .controller('AppCtrl', function ($scope, ls, AppService, $ionicModal, $timeout, $rootScope, $ionicActionSheet) {
+    .controller('AppCtrl', function ($scope,ls, AppService, $ionicModal, $timeout, $rootScope, $ionicActionSheet) {
 
         // With the new view caching in Ionic, Controllers are only called
         // when they are recreated or on app start, instead of every page change.
@@ -72,6 +72,7 @@ angular.module('starter.controllers', ['starter.services', 'ngResource'])
         /*********用户登录操作 ***********/
         
         /*********用户注销操作 ***********/
+        
         $scope.showActionSheet = function () {
             // 显示操作表
             $ionicActionSheet.show({
@@ -134,7 +135,7 @@ angular.module('starter.controllers', ['starter.services', 'ngResource'])
                 $scope.closeMyForecast();
             }, 1000);
         };
-        /*********用户登录操作 ***********/
+        /*********我的预报操作 ***********/
     })
 
     .controller('ForecastCtrl', function (Forecast, $scope, $stateParams, $rootScope) {
@@ -357,7 +358,7 @@ angular.module('starter.controllers', ['starter.services', 'ngResource'])
             
         }
     })
-    .controller("PlayListCtrl", function ($scope, $http, $location) {
+    .controller("PlayListCtrl", function ($scope, $http,$ionicModal,$timeout) {
         // console.log($location.path().substr(5));
        /* $scope.shouldRightSideMenuBeEnabled = function () {
             if ($location.path().substr(5) == 'playlist') {
@@ -367,6 +368,36 @@ angular.module('starter.controllers', ['starter.services', 'ngResource'])
             }
         }
         */
+        /*********我的预报操作 ***********/
+        // Form data for the checks modal
+        $scope.myChecksData = {};
+        // Create the checks modal that we will use later
+        $ionicModal.fromTemplateUrl('templates/myChecks.html', {
+            scope: $scope
+        }).then(function (modal) {
+            $scope.myChecksModal = modal;
+        });
+
+        // Triggered in the login myForecastModal to close it
+        $scope.closeMyChecks = function () {
+            $scope.myChecksModal.hide();
+        };
+
+        // Open the login modal
+        $scope.showMyChecks = function () {
+            $scope.myChecksModal.show();
+        };
+        // Perform the login action when the user submits the login form
+        $scope.doMyChecks = function () {
+            console.log('Doing MyChecks', $scope.myChecksData);
+            // Simulate a login delay. Remove this and replace with your login
+            // code if using a login system
+        
+            $timeout(function () {
+                $scope.closeMyForecast();
+            }, 1000);
+        };
+        /*********用户登录操作 ***********/
         var map = L.map('map').setView([26.58, 106.72], 7);
         var markers = [];
         function onEachFeature(feature, layer) {

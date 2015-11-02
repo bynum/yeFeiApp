@@ -1,0 +1,48 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">要素选择</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeMyChecks()">关闭</button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+    <form ng-submit="doMyChecks()">
+      <div class="list">
+        <li class="item item-toggle">
+          白天天气
+          <label class="toggle toggle-positive">
+            <input type="checkbox" ng-model="myForecastData.dayWeather">
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+        </li>
+
+        <li class="item item-toggle">
+          夜间天气
+          <label class="toggle toggle-positive">
+            <input type="checkbox" ng-model="myForecastData.nightWeather">
+            <div class="track">
+              <div class="handle"></div>
+            </div>
+          </label>
+        </li>
+        <li class="item item-input">
+          <span class="input-label">最高气温</span>
+          <input type="text" ng-model="myForecastData.highTemperature">
+          <span class="input-label" style="text-align:right">℃</span>
+        </li>
+
+        <li class="item item-input">
+          <span class="input-label">最低气温</span>
+          <input type="text" ng-model="myForecastData.lowTemperature">
+          <span class="input-label" style="text-align:right">℃</span>
+        </li>
+
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">确定</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>
